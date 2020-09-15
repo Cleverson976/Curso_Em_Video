@@ -6,3 +6,6 @@ DROP TABLE
 
 DML (LINGUAGEM DE 'MANIPULAÇÃO' DE DADOS) =>
 INSERT INTO teste() VALUES();
+UPDATE teste SET nome = 'teste', WHERE id = '1';
+DELETE FROM teste WHERE id = '1';
+TRUNCATE teste;
