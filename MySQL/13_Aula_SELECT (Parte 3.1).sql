@@ -1,0 +1,49 @@
+USE cadastro;
+
+# EXERCÍCIOS
+
+# 1) = UMA LISTA COM AS PROFISSÕES DOS GAFANHOTOS E SEUS RESPECTIVOS QUATITATIVOS
+SELECT * FROM gafanhotos;
+
+SELECT profissao, COUNT(*) AS Total FROM gafanhotos
+GROUP BY profissao;
+
+# 2) = QUANTOS GAFANHOTOS HOMENS E MULHERES NASCERAM APÓS 01/JAN/2005
+SELECT * FROM gafanhotos;
+
+SELECT sexo, COUNT(*) Total FROM gafanhotos
+WHERE nascimento > '2005-01-01'
+GROUP BY sexo;
+
+# 3) = UMA LISTA COM OS GAFANHOTOS QUE NASCERAM FORA DO BRASIL, MOSTRANDO O PAÍS DE ORIGEM  E O TOTAL DE PESSOAS NASCIDAS LÁ.
+# SÓ NOS INTERESSAM OS PAÍSES QUE TIVEREM MAIS DE 3 GAFANHOTOS COM ESSA NACIONALIDADE.
+SELECT * FROM gafanhotos;
+
+SELECT nacionalidade, COUNT(*) AS Total FROM gafanhotos
+WHERE nacionalidade != 'Brasil'
+GROUP BY nacionalidade
+HAVING COUNT(nacionalidade) > '3';
+
+SELECT nacionalidade, COUNT(*) FROM gafanhotos
+WHERE nacionalidade = 'Angola';
+
+# 4) = UMA LISTA AGRUPADA PELA ALTURA DOS GAFANHOTOS, MOSTRANDO QUANTAS PESSOAS PESAM MAIS DE 100KG 
+# E QUE ESTÃO ACIMA DA MÉDIA DE ALTURA DE TODOS OS CADASTRADOS
+SELECT * FROM gafanhotos;
+
+# MEDIA DE ALTURA (1.66)
+SELECT AVG(altura) FROM gafanhotos;
+
+SELECT altura, peso FROM gafanhotos
+WHERE peso > '100'
+GROUP BY altura
+HAVING altura > (SELECT AVG(altura) FROM gafanhotos)
+ORDER BY altura;
+
+
+
+
+
+
+
+
